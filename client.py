@@ -3,8 +3,7 @@ import socket
 
 cSocket = socket.socket()
 host = '192.168.1.6'
-port = 8881
-
+port = 8888
 
 print('Waiting for connection')
 try:
