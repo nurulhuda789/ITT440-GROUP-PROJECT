@@ -20,7 +20,7 @@ def process_start(s_sock):
 
         #process/calculation
 		try:
-			if data  == '1':
+			if optn[0]  == '1':
 				optn = 'Nasi lemak'
 				price = 2.5
 				ans = (price * float(qty))
