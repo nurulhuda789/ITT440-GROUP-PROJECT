@@ -6,129 +6,114 @@ import json
 import random
 import time
 import errno
+import math
 from multiprocessing import Process
 
 def process_start(s_sock):
-    s_sock.send(str.encode('\n===MUR MUR CAFE===\n'))
+    s_sock.send(str.encode('\n\t\t\t\t*#*#*MUR MUR CAFE*#*#*\t\t\t'))
     while True:
         data = s_sock.recv(2048)
         data = data.decode("utf-8")
 
         #process/calculation
         try:
-            if optn[0] == '1':
-                optn = 'Nasi lemak'
-                price = 2.5
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '2':
-                optn = 'Nasi lemak with curry chicken'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '3':
-                optn = 'Nasi lemak with chicken rendang'
-                price = 6.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '4':
-                optn = 'Special BBQ Chicken Rice'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '5':
-                optn = 'Ginger chicken steamed rice'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '6':
-                optn = 'Garlic Toast'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '7':
-                optn = 'Crunchy Sugar Hainan Toast'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '8':
-                optn = 'Condensed Milk Hainan Toast'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '9':
-                optn = 'Western Mixed Platter'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '10':
-                optn = 'BBQ Chicken Wrap'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '11':
-                optn = 'Chicken Bites Wrap'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '12':
-                optn = 'French Fries'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '13':
-                optn = 'White Coffee'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '14':
-                optn = 'Black Tea'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '15':
-                optn = 'Double Enriched Chocolate'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '16':
-                optn = 'White Coffee Hazelnut Freezy'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '17':
-                optn = 'Fanta Grape Float'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '18':
-                optn = 'Mineral Water'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '19':
-                optn = 'Signature Ice Cream'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif optn[0] == '20':
-                optn = 'Ice Kacang'
-                price = 5.4
-                ans = (price * float(qty))
-                print(optn,'......',price,'[',qty,']','=RM',ans)
-            elif opt == "x":
-                print('YOUR ORDER HAS BEEN SUCCESFULLY RECORDED..\nTHANK YOU FOR YOUR ORDER :)')
-                break
+            operation, num , value = data.split(":")
+            opt = str(operation)
+            qty = int(num)
+            prc = float(value)
+
+            if opt[0] == '1':
+                opt = 'Nasi lemak'
+                prc = 5.3
+                ans = qty * (prc)
+            elif opt[0] == '2':
+                opt = 'Nasi lemak with curry chicken'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '3':
+                opt = 'Nasi lemak with chicken rendang'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '4':
+                opt = 'Special BBQ Chicken Rice'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '5':
+                opt = 'Ginger chicken steamed rice'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '6':
+                opt = 'Garlic Toast'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '7':
+                opt = 'Crunchy Sugar Hainan Toast'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '8':
+                opt = 'Condensed Milk Hainan Toast'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '9':
+                opt = 'Western Mixed Platter'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '10':
+                opt = 'BBQ Chicken Wrap'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '11':
+                opt = 'Chicken Bites Wrap'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '12':
+                opt = 'French Fries'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '13':
+                opt = 'White Coffee'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '14':
+                opt = 'Black Tea'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '15':
+                opt = 'Double Enriched Chocolate'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '16':
+                opt = 'White Coffee Hazelnut Freezy'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '17':
+                opt = 'Fanta Grape Float'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '18':
+                opt = 'Mineral Water'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '19':
+                opt = 'Signature Ice Cream'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '20':
+                opt = 'Ice Kacang'
+                prc = 7
+                ans = qty * (prc)
             else:
-                print ('Invalid input')
-                
-            sndans = print(optn,'......',price,'[',qty,']','=RM',ans)   
-            print('Calculation successfully Done!')
+                answer = ('ERROR')
+
+            sendAns = (str(opt)+ '.... RM'+ str(prc)+ ' ['+ str(qty) + ']: RM' + str(ans))
+            print(sendAns)
+            print ('ORDER RECEIVED!!')
+            #break
         except:
-            print('Connection Terminated')
-            sndans = ('Connection Terminated')
+            print ('Connection Terminated')
+            sendAns = ('Connection Terminated')
             break
-        if not opt:
+        if not data:
             break
 
         s_sock.send(str.encode(str(sendAns)))
