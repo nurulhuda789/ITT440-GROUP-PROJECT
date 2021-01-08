@@ -1,8 +1,10 @@
 import socket
+import signal
+import sys
 
 
 cSocket = socket.socket()
-host = '192.168.1.6'
+host = '192.168.1.109'
 port = 8888
 
 print('Waiting for connection')
@@ -13,10 +15,9 @@ except socket.error as e:
 
 
 Response = cSocket.recv(1024)
-print(Response)
+print(Response.decode("utf-8"))
 
-
-print("Select menu")
+print("\t\t\t\t\tMENU LIST\n")
 print("[1]  Nasi lemak" , end =" ")
 print("                              [2]  Nasi lemak with curry chicken")
 print("[3]  Nasi lemak with chicken rendang", end =" ")
@@ -40,21 +41,24 @@ print("                     [20] Ice Kacang")
 
 
 while True:
-        choice = input("Enter choice: ")
-        cSocket.send(str.encode(choice))
-        if choice in ('1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20'):
-                qty = input("Enter quantity: ")
-                cSocket.send(str.encode(qty))
+    opt = input('\nSelect Your Menu [Code Number] Press exit if you are done..\n> ')
 
-
-        else:
-                print("Invalid Input")
-
-
-        cSocket.send(str.encode(qty))
+    if opt == '1' or opt == '2' or opt == '3' or opt == '4' or opt == '5' or opt == '6' or opt == '7' or opt == '8' or opt == '9' or opt == '10' or opt == '11' or opt == "12" or opt == "13" or opt == "14" or opt == "15" or opt == "16" or opt == "17" or opt == "18" or opt == "19" or opt == "20":
+        qty = input("Quantity per Order: ")
+        prc = '0'
+        Input = opt + ":" + qty + ":" + prc
+        cSocket.send(str.encode(Input))
         Response = cSocket.recv(1024)
-        print(Response.decode('utf-8'))
-        print(type(Response))
+        print(Response.decode("utf-8"))
 
+    elif opt == 'exit':
+        print('YOUR ORDER HAS BEEN SUCCESFULLY RECORDED..\nTHANK YOU FOR YOUR ORDER :)')
+        break
+
+    else:
+        print("WRONG INPUT, TRY AGAIN!!")
+        cSocket.send(str.encode(Input))
+        Response = cSocket.recv(1024)
+        print(Response.decode("utf-8"))
 
 cSocket.close()
