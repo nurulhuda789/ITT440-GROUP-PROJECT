@@ -4,7 +4,7 @@ import sys
 
 
 cSocket = socket.socket()
-host = '192.168.1.109'
+host = '192.168.1.6'
 port = 8888
 
 print('Waiting for connection')
@@ -14,36 +14,41 @@ except socket.error as e:
         print(str(e))
 
 
-Response = cSocket.recv(1024)
+Response = cSocket.recv(2048)
 print(Response.decode("utf-8"))
 
-print("\t\t\t\t\tMENU LIST\n")
-print("[1]  Nasi lemak" , end =" ")
-print("                              [2]  Nasi lemak with curry chicken")
-print("[3]  Nasi lemak with chicken rendang", end =" ")
-print("         [4]  Special BBQ Chicken Rice")
-print("[5]  Ginger chicken steamed rice", end =" ")
-print("             [6]  Garlic Toast")
-print("[7]  Crunchy Sugar Hainan Toast", end =" ")
-print("              [8]  Condensed Milk Hainan Toast")
-print("[9]  Western Mixed Platter", end =" ")
-print("                   [10] BBQ Chicken Wrap")
-print("[11] Chicken Bites Wrap", end =" ")
-print("                      [12] French Fries")
-print("[13] White Coffee", end =" ")
-print("                            [14] Black Tea")
-print("[15] Double Enriched Chocolate", end =" ")
-print("               [16] White Coffee Hazelnut Freezy")
-print("[17] Fanta Grape Float", end =" ")
-print("                       [18] Mineral Water")
-print("[19] Signature Ice Cream", end =" ")
-print("                     [20] Ice Kacang")
+print (	"\n=========================================================================================\n"
+			"\t\t\t* *** *** *** MENU LIST *** **** *** *\t\t\t\n"
+			"=========================================================================================\n");
 
+print("   ------------------------------------------------------------------------------------")
+print("   | [A]  Nasi lemak" , end =" ")
+print("                               [B]  Nasi lemak with curry chicken|")
+print("   | [C]  Nasi lemak with chicken rendang", end =" ")
+print("          [D]  Special BBQ Chicken Rice     |")
+print("   | [E]  Ginger chicken steamed rice", end =" ")
+print("              [F]  Garlic Toast                 |")
+print("   | [G]  Crunchy Sugar Hainan Toast", end =" ")
+print("               [H]  Condensed Milk Hainan Toast  |")
+print("   | [I]  Western Mixed Platter", end =" ")
+print("                    [J] BBQ Chicken Wrap              |")
+print("   | [K]  Chicken Bites Wrap", end =" ")
+print("                       [L] French Fries                  |")
+print("   | [M]  White Coffee", end =" ")
+print("                             [N] Black Tea                     |")
+print("   | [O]  Double Enriched Chocolate", end =" ")
+print("                [P] White Coffee Hazelnut Freezy  |")
+print("   | [Q]  Fanta Grape Float", end =" ")
+print("                        [R] Mineral Water                 |")
+print("   | [S]  Signature Ice Cream", end =" ")
+print("                      [T] Ice Kacang                    |")
+print("   ------------------------------------------------------------------------------------")
+print("=========================================================================================")
 
 while True:
     opt = input('\nSelect Your Menu [Code Number] Press exit if you are done..\n> ')
 
-    if opt == '1' or opt == '2' or opt == '3' or opt == '4' or opt == '5' or opt == '6' or opt == '7' or opt == '8' or opt == '9' or opt == '10' or opt == '11' or opt == "12" or opt == "13" or opt == "14" or opt == "15" or opt == "16" or opt == "17" or opt == "18" or opt == "19" or opt == "20":
+    if opt == "A" or opt == "B" or opt == "C" or opt == "D" or opt == "E" or opt == "F" or opt == "G" or opt == "H" or opt == "I" or opt == "J" or opt == "K" or opt == "L" or opt == "M" or opt == "N" or opt == "O" or opt == "P" or opt == "Q" or opt == "R" or opt == "S" or opt == "T":
         qty = input("Quantity per Order: ")
         prc = '0'
         Input = opt + ":" + qty + ":" + prc
