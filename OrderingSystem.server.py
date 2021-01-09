@@ -4,6 +4,7 @@ import sys
 import json
 import random
 import errno
+import math
 from multiprocessing import Process
 
 def process_start(s_sock):
@@ -15,6 +16,7 @@ def process_start(s_sock):
 
         #process/calculation
         try:
+<<<<<<< HEAD
             menu, num , value = data.split(":")
             opt = str(menu)
             qty = int(num)
@@ -114,6 +116,107 @@ def process_start(s_sock):
         if not data:
             break
 
+=======
+            operation, num , value = data.split(":")
+            opt = str(operation)
+            qty = int(num)
+            prc = float(value)
+
+            if opt[0] == '1':
+                opt = 'Nasi lemak'
+                prc = 5.3
+                ans = qty * (prc)
+            elif opt[0] == '2':
+                opt = 'Nasi lemak with curry chicken'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '3':
+                opt = 'Nasi lemak with chicken rendang'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '4':
+                opt = 'Special BBQ Chicken Rice'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '5':
+                opt = 'Ginger chicken steamed rice'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '6':
+                opt = 'Garlic Toast'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '7':
+                opt = 'Crunchy Sugar Hainan Toast'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '8':
+                opt = 'Condensed Milk Hainan Toast'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '9':
+                opt = 'Western Mixed Platter'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '10':
+                opt = 'BBQ Chicken Wrap'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '11':
+                opt = 'Chicken Bites Wrap'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '12':
+                opt = 'French Fries'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '13':
+                opt = 'White Coffee'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '14':
+                opt = 'Black Tea'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '15':
+                opt = 'Double Enriched Chocolate'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '16':
+                opt = 'White Coffee Hazelnut Freezy'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '17':
+                opt = 'Fanta Grape Float'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '18':
+                opt = 'Mineral Water'
+                prc = 7
+                ans = qty * (prc)
+            elif opt[0] == '19':
+                opt = 'Signature Ice Cream'
+                prc = 6
+                ans = qty * (prc)
+            elif opt[0] == '20':
+                opt = 'Ice Kacang'
+                prc = 7
+                ans = qty * (prc)
+            else:
+                answer = ('ERROR')
+
+            sendAns = (str(opt)+ '.... RM'+ str(prc)+ ' ['+ str(qty) + ']: RM' + str(ans))
+            print(sendAns)
+            print ('ORDER RECEIVED!!')
+            #break
+        except:
+            print ('Connection Terminated')
+            sendAns = ('Connection Terminated')
+            break
+        if not data:
+            break
+
+>>>>>>> c8b71500ff0ba42a278244828ed4c136f327ac8f
         s_sock.send(str.encode(str(sendAns)))
     s_sock.close()
 
