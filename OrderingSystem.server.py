@@ -1,11 +1,8 @@
 import socket
 import os
-from _thread import *
 import sys
 import json
 import random
-import time
-import math
 import errno
 import math
 from multiprocessing import Process
@@ -19,90 +16,90 @@ def process_start(s_sock):
 
         #process/calculation
         try:
-            operation, num , value = data.split(":")
-            opt = str(operation)
+            menu, num , value = data.split(":")
+            opt = str(menu)
             qty = int(num)
             prc = float(value)
 
-            if opt[0] == '1':
+            if opt[0]  == 'A':
                 opt = 'Nasi lemak'
                 prc = 5.3
                 ans = qty * (prc)
-            elif opt[0] == '2':
+            elif opt[0] == 'B':
                 opt = 'Nasi lemak with curry chicken'
                 prc = 6
                 ans = qty * (prc)
-            elif opt[0] == '3':
+            elif opt[0] == 'C':
                 opt = 'Nasi lemak with chicken rendang'
                 prc = 7
                 ans = qty * (prc)
-            elif opt[0] == '4':
+            elif opt[0] == 'D':
                 opt = 'Special BBQ Chicken Rice'
                 prc = 6
                 ans = qty * (prc)
-            elif opt[0] == '5':
+            elif opt[0] == 'E':
                 opt = 'Ginger chicken steamed rice'
-                prc = 7
+                prc = 5
                 ans = qty * (prc)
-            elif opt[0] == '6':
+            elif opt[0] == 'F':
                 opt = 'Garlic Toast'
-                prc = 6
+                prc = 3
                 ans = qty * (prc)
-            elif opt[0] == '7':
+            elif opt[0] == 'G':
                 opt = 'Crunchy Sugar Hainan Toast'
-                prc = 7
+                prc = 3.50
                 ans = qty * (prc)
-            elif opt[0] == '8':
+            elif opt[0] == 'H':
                 opt = 'Condensed Milk Hainan Toast'
-                prc = 6
+                prc = 3.80
                 ans = qty * (prc)
-            elif opt[0] == '9':
+            elif opt[0] == 'I':
                 opt = 'Western Mixed Platter'
-                prc = 7
+                prc = 7.80
                 ans = qty * (prc)
-            elif opt[0] == '10':
+            elif opt[:] == 'J':
                 opt = 'BBQ Chicken Wrap'
-                prc = 6
+                prc = 6.70
                 ans = qty * (prc)
-            elif opt[0] == '11':
+            elif opt[:] == 'K':
                 opt = 'Chicken Bites Wrap'
                 prc = 7
                 ans = qty * (prc)
-            elif opt[0] == '12':
+            elif opt[0] == 'L':
                 opt = 'French Fries'
-                prc = 6
+                prc = 5
                 ans = qty * (prc)
-            elif opt[0] == '13':
+            elif opt[0] == 'M':
                 opt = 'White Coffee'
-                prc = 7
+                prc = 5
                 ans = qty * (prc)
-            elif opt[0] == '14':
+            elif opt[0] == 'N':
                 opt = 'Black Tea'
-                prc = 6
+                prc = 4
                 ans = qty * (prc)
-            elif opt[0] == '15':
+            elif opt[0] == 'O':
                 opt = 'Double Enriched Chocolate'
-                prc = 7
+                prc = 6.30
                 ans = qty * (prc)
-            elif opt[0] == '16':
+            elif opt[0] == 'P':
                 opt = 'White Coffee Hazelnut Freezy'
-                prc = 6
+                prc = 5.80
                 ans = qty * (prc)
-            elif opt[0] == '17':
+            elif opt[0] == 'Q':
                 opt = 'Fanta Grape Float'
-                prc = 7
+                prc = 3.20
                 ans = qty * (prc)
-            elif opt[0] == '18':
+            elif opt[0] == 'R':
                 opt = 'Mineral Water'
-                prc = 7
+                prc = 1.20
                 ans = qty * (prc)
-            elif opt[0] == '19':
+            elif opt[0] == 'S':
                 opt = 'Signature Ice Cream'
-                prc = 6
+                prc = 4
                 ans = qty * (prc)
-            elif opt[0] == '20':
+            elif opt[0] == 'T':
                 opt = 'Ice Kacang'
-                prc = 7
+                prc = 4.70
                 ans = qty * (prc)
             else:
                 answer = ('ERROR')
