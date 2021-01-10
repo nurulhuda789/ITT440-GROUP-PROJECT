@@ -104,18 +104,18 @@ def process_start(s_sock):
             else:
                 answer = ('ERROR')
 
-            sendAns = (str(opt)+ '.... RM'+ str(prc)+ ' ['+ str(qty) + ']: RM' + str(ans))
-            print(sendAns)
+            sendtoCli = (str(opt)+ '.... RM'+ str(prc)+ ' ['+ str(qty) + ']: RM' + str(ans))
+            print(sendtoCli)
             print ('ORDER RECEIVED!!')
             #break
         except:
             print ('Connection Terminated')
-            sendAns = ('Connection Terminated')
+            sendtoCli = ('Connection Terminated')
             break
         if not data:
             break
 
-        s_sock.send(str.encode(str(sendAns)))
+        s_sock.send(str.encode(str(sendtoCli)))
     s_sock.close()
 
 if __name__ == '__main__':
